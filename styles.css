@@ -120,9 +120,9 @@ a:hover {
 }
 
 .header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   height: var(--nav-height);
 }
 
@@ -134,11 +134,40 @@ a:hover {
   letter-spacing: 0.01em;
   color: #fff;
   text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  grid-column: 2;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 2px;
+  border-radius: 999px;
+  background: #e8192c;
 }
 
 .logo:hover {
   text-decoration: none;
   color: #fff;
+}
+
+.logo-rest {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition: max-width 0.35s ease, opacity 0.2s ease;
+}
+
+.logo:hover .logo-rest {
+  max-width: 8em;
+  opacity: 1;
 }
 
 .nav {
@@ -148,6 +177,8 @@ a:hover {
   font-weight: 500;
   letter-spacing: 0.12em;
   color: var(--text-primary);
+  grid-column: 3;
+  justify-self: end;
 }
 
 .nav a {
@@ -168,7 +199,7 @@ a:hover {
   width: 0;
   height: 2px;
   border-radius: 999px;
-  background: #b88a78;
+  background: #e8192c;
   transition: width 150ms ease-out;
 }
 
@@ -392,8 +423,8 @@ a:hover {
   justify-content: center;
   align-self: center;
   margin-top: 1rem;
-  padding: 1.1rem 2.6rem;
-  border-radius: 0.4rem;
+  padding: 1.1rem 2.8rem;
+  border-radius: 0.5rem;
   border: 1px solid var(--text-primary);
   background: radial-gradient(var(--bg-btn-dark) 0%, rgba(var(--bg-darkest-rgb), 0.9) 80%);
   color: var(--text-primary);
@@ -415,7 +446,7 @@ a:hover {
 .contact-cta:hover {
   text-decoration: none;
   border-radius: 10rem;
-  padding: 1.1rem 2.4rem;
+  padding: 1.1rem 2.6rem;
   background: radial-gradient(rgba(var(--color-accent-rgb), 0.8) 0%, rgba(var(--bg-darkest-rgb), 0.95) 80%);
   color: #ffffff;
   border-color: rgba(var(--color-accent-rgb), 0.75);
@@ -473,11 +504,8 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* Responsive: header & nav */
 @media (max-width: 640px) {
   .header-inner {
-    flex-wrap: nowrap;
-    gap: 1rem;
     height: var(--nav-height);
     min-height: var(--nav-height);
   }
@@ -485,7 +513,6 @@ a:hover {
   .logo {
     font-size: 1.5rem;
     line-height: 1;
-    flex: 0 0 auto;
   }
 
   .nav {
@@ -517,28 +544,30 @@ a:hover {
   }
 }
 
-/* Narrow screens: allow header to grow (avoid overlap).
-   Keep nav inline until it naturally needs to wrap. */
 @media (max-width: 520px) {
   .header-inner {
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
     height: auto;
     min-height: var(--nav-height);
     padding-block: 0.75rem;
     row-gap: 0.5rem;
+    justify-items: center;
+  }
+
+  .logo {
+    grid-column: 1;
   }
 
   .nav {
+    grid-column: 1;
+    justify-self: center;
     white-space: normal;
   }
 }
 
-/* Very small screens: stack logo and nav vertically, nav links one per line */
 @media (max-width: 380px) {
   .header-inner {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+    row-gap: 0.5rem;
     padding-block: 1rem;
   }
 
@@ -555,7 +584,6 @@ a:hover {
   }
 }
 
-/* Responsive: contact & footer */
 @media (max-width: 480px) {
   .contact-cta {
     align-self: center;
@@ -581,7 +609,6 @@ a:hover {
   }
 }
 
-/* Prevent horizontal overflow */
 html {
   overflow-x: hidden;
 }
