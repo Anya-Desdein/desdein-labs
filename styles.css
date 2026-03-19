@@ -5,24 +5,35 @@
   --color-shadow-purple-rgb: 53, 28, 49;
   --bg-darkest-rgb: 8, 0, 12;
 
-  --bg-primary: #0F0017;
+  /* Sunset palette — desaturated embers, not a bonfire */
+  --bg-primary: #0d0000;
+  --bg-horizon: #1f0805;
+  --bg-ember: #3a1008;
   --bg-black: #000;
-  --bg-card-dark: #08000c;
-  --bg-card-light: #0c0014;
-  --bg-btn-dark: #1a0810;
-  
+  --bg-card-dark: #0e0302;
+  --bg-card-light: #180604;
+
+  /* Frosted-glass surface tokens */
+  --glass-bg: rgba(72, 14, 4, 0.52);
+  --glass-highlight: rgba(255, 120, 60, 0.09);
+  --glass-border: rgba(200, 90, 40, 0.28);
+  --glass-blur: 22px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), 0 1.5px 0 rgba(255, 110, 50, 0.10) inset;
+
+  --bg-btn-dark: #1a0806;
+
   --color-accent: #e8192c;
-  --color-shadow-dark: #231420;
+  --color-shadow-dark: #231410;
   --color-gold: #BEAC8F;
 
-  --border-subtle: rgba(var(--color-gold-rgb), 0.22);
-  --text-primary: #e5e7eb;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
+  --border-subtle: rgba(var(--color-gold-rgb), 0.18);
+  --text-primary: #e8e2dc;
+  --text-secondary: #9c9490;
+  --text-muted: #6b6460;
   --radius-xl: 20px;
-  --shadow-soft: 0 18px 40px rgba(var(--color-shadow-purple-rgb), 0.5);
-  --shadow-gold: 0 0 40px rgba(var(--color-gold-rgb), 0.08);
-  --blur-header: 18px;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 0 40px rgba(var(--color-gold-rgb), 0.06);
+  --blur-header: 22px;
   --nav-height: 64px;
   --text-huge: 2.39rem;
 }
@@ -54,9 +65,32 @@ main {
 body {
   font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, var(--bg-primary) 0, var(--bg-primary) 42%, var(--bg-black) 100%)
-      fixed,
-    var(--bg-primary);
+  /*
+   * Layered sunset canvas:
+   *  1. A wide elliptical ember glow low on the horizon  — warm ochre/sienna
+   *  2. A tighter hot-core bloom at the very bottom      — deep crimson
+   *  3. Linear sweep: pure black at top, near-black at bottom
+   * All composited fixed so parallax scrolling shows depth.
+   */
+  background:
+    radial-gradient(
+      ellipse 120% 45% at 50% 108%,
+      rgba(180, 60, 10, 0.38) 0%,
+      rgba(100, 20, 5, 0.18) 55%,
+      transparent 100%
+    ) fixed,
+    radial-gradient(
+      ellipse 55% 28% at 50% 104%,
+      rgba(232, 25, 20, 0.28) 0%,
+      transparent 100%
+    ) fixed,
+    linear-gradient(
+      to bottom,
+      #000000 0%,
+      #060101 55%,
+      #120402 85%,
+      #1c0604 100%
+    ) fixed;
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
 }
@@ -92,14 +126,14 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(var(--blur-header));
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 0, 23, 0.9),
-    rgba(15, 0, 23, 0.6),
-    transparent
-  );
-  border-bottom: 1px solid rgba(var(--color-gold-rgb), 0.3);
+  backdrop-filter: blur(var(--blur-header)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--blur-header)) saturate(140%);
+  background: rgba(0, 0, 0, 0.92);
+  /* frosted inner-highlight edge */
+  box-shadow:
+    0 1px 0 rgba(200, 80, 30, 0.18),
+    0 -1px 0 rgba(0, 0, 0, 0.6) inset;
+  border-bottom: 1px solid rgba(180, 70, 25, 0.20);
 }
 
 .site-header::after {
@@ -111,12 +145,7 @@ a:hover {
   height: 2rem;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(var(--color-shadow-purple-rgb), 0.35),
-    rgba(var(--color-shadow-purple-rgb), 0.12) 30%,
-    transparent 70%
-  );
+  background: none;
 }
 
 .header-inner {
@@ -259,8 +288,19 @@ a:hover {
 }
 
 .section-alt {
-  background: radial-gradient(circle at top, var(--bg-primary) 0, var(--bg-primary) 40%, var(--bg-black) 100%);
-  border-top: 1px solid rgba(var(--color-gold-rgb), 0.35);
+  /*
+   * Frosted divider section — same canvas bleeds through,
+   * just a warm-tinted translucent veil on top.
+   */
+  backdrop-filter: blur(0px);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(180, 55, 12, 0.06) 0%,
+      rgba(100, 20, 5, 0.04) 60%,
+      transparent 100%
+    );
+  border-top: 1px solid rgba(180, 70, 25, 0.22);
 }
 
 .section-header {
@@ -302,9 +342,19 @@ a:hover {
 
 .card {
   border-radius: var(--radius-xl);
-  background: radial-gradient(circle at top left, var(--bg-card-light) 0, var(--bg-card-dark) 58%);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-soft), var(--shadow-gold);
+  backdrop-filter: blur(var(--glass-blur)) saturate(130%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(130%);
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255, 120, 50, 0.07) 0%,
+      transparent 45%
+    ),
+    var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    var(--shadow-soft),
+    0 1px 0 rgba(255, 120, 60, 0.12) inset;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -314,7 +364,7 @@ a:hover {
 .card-media {
   position: relative;
   overflow: hidden;
-  background: var(--bg-card-dark);
+  background: rgba(58, 10, 3, 0.72);
 }
 
 .card-media img,
@@ -426,20 +476,24 @@ a:hover {
   padding: 1.1rem 2.8rem;
   border-radius: 0.5rem;
   border: 1px solid var(--text-primary);
-  background: radial-gradient(var(--bg-btn-dark) 0%, rgba(var(--bg-darkest-rgb), 0.9) 80%);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  background: rgba(70, 14, 4, 0.68);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.55),
+    0 1px 0 rgba(255, 100, 40, 0.14) inset;
   color: var(--text-primary);
   font-size: 1.55rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
-  transition: border-radius 0.25s ease-in-out,
-              background 0.7s cubic-bezier(0.3, 0, 0.95, 0.1),
-              color 0.3s ease,
-              border-color 0.3s ease,
-              box-shadow 0.3s ease,
-              padding 0.25s ease-in-out;
+  transition: border-radius 0.28s ease-out,
+              background 0.28s ease-out,
+              color 0.28s ease-out,
+              border-color 0.28s ease-out,
+              box-shadow 0.28s ease-out,
+              padding 0.28s ease-in-out;
   text-shadow: none;
 }
 
@@ -447,7 +501,7 @@ a:hover {
   text-decoration: none;
   border-radius: 10rem;
   padding: 1.1rem 2.6rem;
-  background: radial-gradient(rgba(var(--color-accent-rgb), 0.8) 0%, rgba(var(--bg-darkest-rgb), 0.95) 80%);
+  background: rgba(180, 20, 20, 0.55);
   color: #ffffff;
   border-color: rgba(var(--color-accent-rgb), 0.75);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 28px rgba(var(--color-accent-rgb), 0.6);
@@ -462,21 +516,23 @@ a:hover {
 .contact-links a {
   padding: 0.4rem 0.85rem;
   border-radius: 0.4rem;
-  background: radial-gradient(var(--bg-btn-dark) 0%, rgba(var(--bg-darkest-rgb), 0.9) 80%);
-  border: 1px solid rgba(var(--color-gold-rgb), 0.45);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  background: rgba(66, 13, 4, 0.58);
+  border: 1px solid rgba(var(--color-gold-rgb), 0.28);
+  box-shadow: 0 1px 0 rgba(255, 100, 40, 0.12) inset;
   color: var(--text-secondary);
   text-decoration: none;
-  box-shadow: none;
   text-shadow: none;
-  transition: background 0.7s cubic-bezier(0.3, 0, 0.95, 0.1),
-              color 0.3s ease,
-              border-radius 0.7s ease,
-              box-shadow 0.3s ease,
-              border-color 0.3s ease;
+  transition: background 0.28s ease-out,
+              color 0.28s ease-out,
+              border-radius 0.28s ease-out,
+              box-shadow 0.28s ease-out,
+              border-color 0.28s ease-out;
 }
 
 .contact-links a:hover {
-  background: radial-gradient(var(--color-accent) 0%, rgba(var(--bg-darkest-rgb), 0.65) 80%);
+  background: rgba(180, 20, 20, 0.50);
   color: #ffffff;
   text-decoration: none;
   border-radius: 1.2rem;
@@ -491,9 +547,12 @@ a:hover {
 }
 
 .site-footer {
-  border-top: 1px solid rgba(var(--color-gold-rgb), 0.35);
+  border-top: 1px solid rgba(180, 70, 25, 0.22);
   padding: 1.25rem 0 1.5rem;
-  background: radial-gradient(circle at bottom, var(--bg-primary) 0, var(--bg-black) 60%);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  background: rgba(62, 12, 3, 0.65);
+  box-shadow: 0 -1px 0 rgba(255, 110, 40, 0.14) inset;
 }
 
 .footer-inner {
@@ -615,5 +674,33 @@ html {
 
 body {
   overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+  /* Always show full logo text on phones */
+  .logo-rest {
+    max-width: 8em;
+    opacity: 1;
+  }
+
+  .logo {
+    margin-top: 0.6rem;
+  }
+
+  /* Pin "get in touch" to its hover/active appearance, keep default padding width */
+  .contact-cta {
+    border-radius: 10rem;
+    padding: 1.1rem 2.8rem;
+    background: rgba(180, 20, 20, 0.55);
+    color: #ffffff;
+    border-color: rgba(var(--color-accent-rgb), 0.75);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 28px rgba(var(--color-accent-rgb), 0.6);
+    text-shadow:
+      var(--color-shadow-dark) 0 0 0.10rem,
+      var(--color-shadow-dark) 0 0 0.15rem,
+      rgba(var(--color-shadow-dark-rgb), 0.6) 0 0 1rem,
+      rgba(var(--color-shadow-dark-rgb), 0.7) 0 0 2.8rem,
+      rgba(var(--color-shadow-dark-rgb), 0.2) 0 0 3rem;
+  }
 }
 
