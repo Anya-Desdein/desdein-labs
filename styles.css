@@ -36,6 +36,13 @@
   --blur-header: 22px;
   --nav-height: 64px;
   --text-huge: 2.39rem;
+  --text-shadow-glow:
+    var(--color-shadow-dark) 0 0 0.10rem,
+    var(--color-shadow-dark) 0 0 0.15rem,
+    rgba(var(--color-shadow-dark-rgb), 0.6) 0 0 1rem,
+    rgba(var(--color-shadow-dark-rgb), 0.7) 0 0 2.8rem,
+    rgba(var(--color-shadow-dark-rgb), 0.2) 0 0 3rem;
+  --transition-hover: 0.28s ease-out;
 }
 
 *,
@@ -292,7 +299,6 @@ a:hover {
    * Frosted divider section — same canvas bleeds through,
    * just a warm-tinted translucent veil on top.
    */
-  backdrop-filter: blur(0px);
   background:
     linear-gradient(
       to bottom,
@@ -496,11 +502,11 @@ a:hover {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: border-radius 0.28s ease-out,
-              background 0.28s ease-out,
-              color 0.28s ease-out,
-              border-color 0.28s ease-out,
-              box-shadow 0.28s ease-out,
+  transition: border-radius var(--transition-hover),
+              background var(--transition-hover),
+              color var(--transition-hover),
+              border-color var(--transition-hover),
+              box-shadow var(--transition-hover),
               padding 0.28s ease-in-out;
   text-shadow: none;
 }
@@ -513,12 +519,7 @@ a:hover {
   color: #f6d878;
   border-color: rgba(246, 216, 120, 0.95);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 28px rgba(var(--color-accent-rgb), 0.6);
-  text-shadow:
-    var(--color-shadow-dark) 0 0 0.10rem,
-    var(--color-shadow-dark) 0 0 0.15rem,
-    rgba(var(--color-shadow-dark-rgb), 0.6) 0 0 1rem,
-    rgba(var(--color-shadow-dark-rgb), 0.7) 0 0 2.8rem,
-    rgba(var(--color-shadow-dark-rgb), 0.2) 0 0 3rem;
+  text-shadow: var(--text-shadow-glow);
 }
 
 .contact-links a {
@@ -532,11 +533,11 @@ a:hover {
   color: #e9d79e;
   text-decoration: none;
   text-shadow: none;
-  transition: background 0.28s ease-out,
-              color 0.28s ease-out,
-              border-radius 0.28s ease-out,
-              box-shadow 0.28s ease-out,
-              border-color 0.28s ease-out;
+  transition: background var(--transition-hover),
+              color var(--transition-hover),
+              border-radius var(--transition-hover),
+              box-shadow var(--transition-hover),
+              border-color var(--transition-hover);
 }
 
 .contact-links a:hover {
@@ -546,12 +547,7 @@ a:hover {
   border-radius: 1.2rem;
   border-color: rgba(255, 244, 207, 0.85);
   box-shadow: 0 0 22px rgba(var(--color-accent-rgb), 0.3);
-  text-shadow:
-    var(--color-shadow-dark) 0 0 0.10rem,
-    var(--color-shadow-dark) 0 0 0.15rem,
-    rgba(var(--color-shadow-dark-rgb), 0.6) 0 0 1rem,
-    rgba(var(--color-shadow-dark-rgb), 0.7) 0 0 2.8rem,
-    rgba(var(--color-shadow-dark-rgb), 0.2) 0 0 3rem;
+  text-shadow: var(--text-shadow-glow);
 }
 
 .site-footer {
@@ -703,12 +699,7 @@ body {
     color: #f6d878;
     border-color: rgba(246, 216, 120, 0.95);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 28px rgba(var(--color-accent-rgb), 0.6);
-    text-shadow:
-      var(--color-shadow-dark) 0 0 0.10rem,
-      var(--color-shadow-dark) 0 0 0.15rem,
-      rgba(var(--color-shadow-dark-rgb), 0.6) 0 0 1rem,
-      rgba(var(--color-shadow-dark-rgb), 0.7) 0 0 2.8rem,
-      rgba(var(--color-shadow-dark-rgb), 0.2) 0 0 3rem;
+    text-shadow: var(--text-shadow-glow);
   }
 }
 
