@@ -327,6 +327,14 @@ a:hover {
   text-align: center;
 }
 
+/* Make anchor navigation land below the sticky header on medium+large screens. */
+@media (min-width: 641px) {
+  #contact,
+  #about {
+    scroll-margin-top: calc(var(--nav-height) + 0.75rem);
+  }
+}
+
 .projects-grid {
   margin-top: 2rem;
   display: grid;
@@ -475,14 +483,14 @@ a:hover {
   margin-top: 1rem;
   padding: 1.1rem 2.8rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--text-primary);
+  border: 1px solid rgba(246, 216, 120, 0.75);
   backdrop-filter: blur(10px) saturate(120%);
   -webkit-backdrop-filter: blur(10px) saturate(120%);
   background: rgba(70, 14, 4, 0.68);
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.55),
     0 1px 0 rgba(255, 100, 40, 0.14) inset;
-  color: var(--text-primary);
+  color: #f6d878;
   font-size: 1.55rem;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -502,8 +510,8 @@ a:hover {
   border-radius: 10rem;
   padding: 1.1rem 2.6rem;
   background: rgba(180, 20, 20, 0.55);
-  color: #ffffff;
-  border-color: rgba(var(--color-accent-rgb), 0.75);
+  color: #f6d878;
+  border-color: rgba(246, 216, 120, 0.95);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 28px rgba(var(--color-accent-rgb), 0.6);
   text-shadow:
     var(--color-shadow-dark) 0 0 0.10rem,
@@ -519,9 +527,9 @@ a:hover {
   backdrop-filter: blur(8px) saturate(120%);
   -webkit-backdrop-filter: blur(8px) saturate(120%);
   background: rgba(66, 13, 4, 0.58);
-  border: 1px solid rgba(var(--color-gold-rgb), 0.28);
+  border: 1px solid rgba(233, 215, 158, 0.55);
   box-shadow: 0 1px 0 rgba(255, 100, 40, 0.12) inset;
-  color: var(--text-secondary);
+  color: #e9d79e;
   text-decoration: none;
   text-shadow: none;
   transition: background 0.28s ease-out,
@@ -533,10 +541,10 @@ a:hover {
 
 .contact-links a:hover {
   background: rgba(180, 20, 20, 0.50);
-  color: #ffffff;
+  color: #fff4cf;
   text-decoration: none;
   border-radius: 1.2rem;
-  border-color: rgba(var(--color-accent-rgb), 0.75);
+  border-color: rgba(255, 244, 207, 0.85);
   box-shadow: 0 0 22px rgba(var(--color-accent-rgb), 0.3);
   text-shadow:
     var(--color-shadow-dark) 0 0 0.10rem,
@@ -560,7 +568,7 @@ a:hover {
   align-items: center;
   justify-content: flex-end;
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: #ffffff;
 }
 
 @media (max-width: 640px) {
@@ -692,8 +700,8 @@ body {
     border-radius: 10rem;
     padding: 1.1rem 2.8rem;
     background: rgba(180, 20, 20, 0.55);
-    color: #ffffff;
-    border-color: rgba(var(--color-accent-rgb), 0.75);
+    color: #f6d878;
+    border-color: rgba(246, 216, 120, 0.95);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 28px rgba(var(--color-accent-rgb), 0.6);
     text-shadow:
       var(--color-shadow-dark) 0 0 0.10rem,
