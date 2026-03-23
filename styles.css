@@ -487,7 +487,7 @@ a:hover {
   justify-content: center;
   align-self: center;
   margin-top: 1rem;
-  padding: 1.1rem 2.8rem;
+  padding: 1.1rem 3.2rem;
   border-radius: 0.5rem;
   border: 1px solid rgba(246, 216, 120, 0.75);
   backdrop-filter: blur(10px) saturate(120%);
@@ -514,7 +514,7 @@ a:hover {
 .contact-cta:hover {
   text-decoration: none;
   border-radius: 10rem;
-  padding: 1.1rem 2.6rem;
+  padding: 1.1rem 2.8rem;
   background: rgba(180, 20, 20, 0.55);
   color: #f6d878;
   border-color: rgba(246, 216, 120, 0.95);
