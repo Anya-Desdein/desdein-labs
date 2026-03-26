@@ -1341,15 +1341,8 @@ main > .split-section:nth-child(6) {
     min-height: min(420px, 55vh);
   }
 
-  /* Gutter between image and text: space after image when it’s on the left,
-     space before image when it’s on the right. */
-  .split-row:not(.split-row--reverse) .split-visual {
-    margin-right: var(--split-industry-gutter);
-  }
-
   .split-row--reverse .split-visual {
     order: 2;
-    margin-left: var(--split-industry-gutter);
   }
 
   .split-row--reverse .split-copy {
@@ -1439,11 +1432,11 @@ main > .split-section:nth-child(6) {
 
 @media (min-width: 880px) {
   .split-copy {
-    padding: 2.5rem 2.5rem 2.5rem 0;
+    padding: 2.5rem 2.5rem 2.5rem var(--split-industry-gutter);
   }
 
   .split-row--reverse .split-copy {
-    padding: 2.5rem 0 2.5rem 2.5rem;
+    padding: 2.5rem var(--split-industry-gutter) 2.5rem 2.5rem;
   }
 }
 
