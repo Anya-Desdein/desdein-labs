@@ -64,15 +64,15 @@ body {
     ) fixed,
     radial-gradient(
       ellipse 70% 50% at 100% 100%,
-      rgba(27, 67, 50, 0.45) 0%,
+      rgba(0, 0, 0, 0.45) 0%,
       transparent 50%
     ) fixed,
     radial-gradient(
       ellipse 55% 40% at 0% 85%,
-      rgba(45, 106, 79, 0.28) 0%,
+      rgba(0, 0, 0, 0.28) 0%,
       transparent 45%
     ) fixed,
-    linear-gradient(180deg, #010403 0%, var(--bg-deep) 40%, #050a08 100%)
+    linear-gradient(180deg, #010403 0%, var(--bg-deep) 40%, #000000 100%)
       fixed;
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -215,7 +215,12 @@ a:hover {
   bottom: -3px;
   height: 2px;
   border-radius: var(--radius-pill);
-  background: linear-gradient(90deg, #52c48a, #94c44e);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, #c8d940 calc(var(--logo-ul-t, 0) * 100%), #52c48a),
+    color-mix(in srgb, #d4e024 calc(var(--logo-ul-t, 0) * 100%), #74c69d)
+  );
+  transition: background 0.15s ease;
 }
 
 .logo:hover {
@@ -1424,7 +1429,7 @@ main > .split-section:nth-child(6) {
 }
 
 .split-copy {
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1463,8 +1468,8 @@ main > .split-section:nth-child(6) {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(13, 59, 77, 0.15) 45%,
-    rgba(27, 67, 50, 0.2) 100%
+    rgba(0, 0, 0, 0.15) 45%,
+    rgba(0, 0, 0, 0.2) 100%
   );
   position: relative;
   isolation: isolate;
@@ -1475,8 +1480,8 @@ main > .split-section:nth-child(6) {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, rgba(4, 20, 12, 0.85));
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.85));
   pointer-events: none;
   z-index: -1;
 }
@@ -1518,7 +1523,7 @@ main > .split-section:nth-child(6) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.65rem;
+  gap: 1rem;
 }
 
 .trust-cta-note {
@@ -1533,6 +1538,7 @@ main > .split-section:nth-child(6) {
   position: relative;
   isolation: isolate;
   z-index: 1;
+  padding-top: 1rem;
 }
 
 .section-contact::after {
@@ -1540,7 +1546,7 @@ main > .split-section:nth-child(6) {
   position: absolute;
   inset: 0 0 auto;
   height: 120px;
-  background: linear-gradient(to top, transparent, rgba(4, 20, 12, 0.85));
+  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.85));
   pointer-events: none;
   z-index: -1;
 }
@@ -1584,7 +1590,7 @@ main > .split-section:nth-child(6) {
 }
 
 .contact-email {
-  margin-top: 0.35rem;
+  margin-top: 0.1rem;
   font-size: 1.1rem;
   font-weight: 600;
   background: linear-gradient(90deg, #52c48a, #94c44e);
@@ -1601,7 +1607,7 @@ main > .split-section:nth-child(6) {
 }
 
 .contact-links {
-  margin-top: 1.25rem;
+  margin-top: 1.1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
@@ -1635,6 +1641,25 @@ main > .split-section:nth-child(6) {
     0 0 18px rgba(94, 203, 214, 0.12);
 }
 
+.contact-links a[href^="mailto:"],
+.contact-links a[href*="linkedin"] {
+  background: linear-gradient(135deg, #52c48a, #94c44e);
+  border-color: rgba(82, 196, 138, 0.5);
+  color: #0a150e;
+  font-weight: 600;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
+.contact-links a[href^="mailto:"]:hover,
+.contact-links a[href*="linkedin"]:hover {
+  background: linear-gradient(135deg, #63d09a, #a0d05a);
+  border-color: rgba(82, 196, 138, 0.8);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.3),
+    0 0 18px rgba(82, 196, 138, 0.25);
+}
+
 .contact-links a[data-booking-link] {
   background: linear-gradient(135deg, #f9c94e, #e8a020);
   border-color: rgba(249, 201, 78, 0.5);
@@ -1653,7 +1678,7 @@ main > .split-section:nth-child(6) {
 .site-footer {
   border-top: 1px solid var(--border-subtle);
   padding: 1.25rem 0 1.5rem;
-  background: rgba(2, 8, 5, 0.85);
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .footer-inner {
