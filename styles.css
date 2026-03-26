@@ -1636,21 +1636,36 @@ main > .split-section:nth-child(6) {
 
 .contact-links a[href^="mailto:"],
 .contact-links a[href*="linkedin"] {
-  background: linear-gradient(135deg, #52c48a, #94c44e);
-  border-color: rgba(82, 196, 138, 0.5);
-  color: #0a150e;
-  font-weight: 600;
+  color: var(--text-primary);
+  font-weight: 500;
   padding-left: 1.6rem;
   padding-right: 1.6rem;
 }
 
-.contact-links a[href^="mailto:"]:hover,
+.contact-links a[href^="mailto:"] {
+  background: rgba(82, 196, 138, 0.08);
+  border-color: rgba(82, 196, 138, 0.15);
+}
+
+.contact-links a[href*="linkedin"] {
+  background: rgba(30, 160, 210, 0.15);
+  border-color: rgba(30, 160, 210, 0.3);
+}
+
+.contact-links a[href^="mailto:"]:hover {
+  background: rgba(82, 196, 138, 0.12);
+  border-color: rgba(82, 196, 138, 0.3);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.2),
+    0 0 18px rgba(82, 196, 138, 0.1);
+}
+
 .contact-links a[href*="linkedin"]:hover {
-  background: linear-gradient(135deg, #63d09a, #a0d05a);
-  border-color: rgba(82, 196, 138, 0.8);
+  background: rgba(30, 160, 210, 0.25);
+  border-color: rgba(30, 160, 210, 0.5);
   box-shadow:
     0 10px 28px rgba(0, 0, 0, 0.3),
-    0 0 18px rgba(82, 196, 138, 0.25);
+    0 0 18px rgba(30, 160, 210, 0.15);
 }
 
 .contact-links a[data-booking-link] {
