@@ -299,7 +299,7 @@ a:hover {
   width: 0;
   height: 2px;
   border-radius: var(--radius-pill);
-  background: var(--water-400);
+  background: linear-gradient(90deg, #52c48a, #94c44e);
   transition: width var(--transition);
 }
 
@@ -319,7 +319,7 @@ a:hover {
 .nav-cta {
   padding: 0.45rem 1.1rem !important;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border-strong);
+  border: 1px solid rgba(82, 183, 136, 0.38);
   background:
     radial-gradient(
       ellipse 95% 85% at 50% 115%,
@@ -333,8 +333,8 @@ a:hover {
     ),
     linear-gradient(
       145deg,
-      rgba(45, 106, 79, 0.45) 0%,
-      rgba(13, 59, 77, 0.4) 100%
+      rgba(45, 106, 79, 0.52) 0%,
+      rgba(27, 67, 50, 0.46) 100%
     );
   color: var(--text-primary) !important;
   text-decoration: none !important;
@@ -352,32 +352,32 @@ a:hover {
 .nav-cta:hover {
   text-decoration: none !important;
   transform: translateY(-1.5px) scale(1.003);
-  border-color: rgba(110, 231, 197, 0.55);
+  border-color: rgba(82, 196, 138, 0.65);
   filter: brightness(1.05);
   background:
     radial-gradient(
       ellipse 95% 85% at 50% 115%,
-      rgba(94, 203, 214, 0.22) 0%,
+      rgba(82, 183, 136, 0.24) 0%,
       rgba(64, 145, 108, 0.14) 42%,
       transparent 72%
     ),
     radial-gradient(
       ellipse 70% 55% at 50% -5%,
-      rgba(110, 231, 197, 0.12) 0%,
+      rgba(148, 196, 78, 0.1) 0%,
       transparent 62%
     ),
     linear-gradient(
       145deg,
-      rgba(64, 145, 108, 0.58) 0%,
-      rgba(27, 111, 122, 0.52) 100%
+      rgba(64, 145, 108, 0.65) 0%,
+      rgba(45, 106, 79, 0.58) 100%
     );
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.36),
-    0 0 0 1px rgba(94, 203, 214, 0.2),
-    0 0 36px rgba(94, 203, 214, 0.18),
-    0 0 60px rgba(82, 183, 136, 0.12),
+    0 0 0 1px rgba(82, 183, 136, 0.22),
+    0 0 36px rgba(82, 183, 136, 0.18),
+    0 0 60px rgba(148, 196, 78, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    inset 0 -18px 40px rgba(94, 203, 214, 0.06);
+    inset 0 -18px 40px rgba(82, 183, 136, 0.06);
 }
 
 .nav-cta::after {
@@ -389,6 +389,9 @@ a:hover {
   position: relative;
   isolation: isolate;
   padding: 2.75rem 0 2.5rem;
+  min-height: calc(88dvh - var(--site-header-offset));
+  display: flex;
+  align-items: center;
 }
 
 .hero::before {
@@ -491,76 +494,77 @@ a:hover {
 .btn-primary:hover {
   text-decoration: none;
   transform: translateY(-4px) scale(1.008);
-  border-color: rgba(94, 196, 138, 0.65);
-  filter: brightness(1.06);
+  border-color: rgba(94, 196, 138, 0.75);
+  filter: brightness(1.12) saturate(1.18);
   background:
     radial-gradient(
       ellipse 95% 85% at 50% 115%,
-      rgba(148, 196, 78, 0.22) 0%,
-      rgba(72, 184, 116, 0.14) 42%,
+      rgba(82, 196, 138, 0.32) 0%,
+      rgba(72, 184, 116, 0.18) 42%,
       transparent 72%
     ),
     radial-gradient(
       ellipse 70% 55% at 50% -5%,
-      rgba(82, 196, 138, 0.14) 0%,
+      rgba(148, 196, 78, 0.18) 0%,
       transparent 62%
     ),
     linear-gradient(
       160deg,
-      #35956a 0%,
-      #1f6040 52%,
-      #0f3f24 100%
+      #46b87e 0%,
+      #286e4a 52%,
+      #114228 100%
     );
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.36),
-    0 0 0 1px rgba(94, 196, 138, 0.14),
-    0 0 28px rgba(94, 196, 138, 0.13),
-    0 0 48px rgba(148, 196, 78, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 -20px 48px rgba(46, 122, 80, 0.05);
+    0 0 0 1px rgba(82, 196, 138, 0.22),
+    0 0 28px rgba(82, 196, 138, 0.2),
+    0 0 48px rgba(148, 196, 78, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -20px 48px rgba(46, 122, 80, 0.08);
 }
 
 .btn-primary--large {
   padding: 1rem 2rem;
   font-size: 1.08rem;
-  border-color: rgba(249, 201, 78, 0.5);
+  border-color: rgba(188, 186, 34, 0.52);
   background: linear-gradient(
     160deg,
-    #f9c94e 0%,
-    #e8a020 55%,
-    #c97b00 100%
+    #c4bc2a 0%,
+    #a89616 55%,
+    #7e740a 100%
   );
   color: #1c1000;
 }
 
 .btn-primary--large:hover {
   transform: translateY(-3px) scale(1.005);
-  border-color: rgba(249, 201, 78, 0.8);
+  border-color: rgba(210, 214, 60, 0.8);
+  color: #1c1000;
   background:
     radial-gradient(
       ellipse 95% 85% at 50% 115%,
-      rgba(255, 179, 71, 0.35) 0%,
-      rgba(232, 160, 32, 0.18) 42%,
+      rgba(218, 218, 72, 0.3) 0%,
+      rgba(210, 214, 60, 0.16) 42%,
       transparent 72%
     ),
     radial-gradient(
       ellipse 70% 55% at 50% -5%,
-      rgba(249, 201, 78, 0.2) 0%,
+      rgba(210, 214, 60, 0.18) 0%,
       transparent 62%
     ),
     linear-gradient(
       160deg,
-      #f9c94e 0%,
-      #e8a020 52%,
-      #c97b00 100%
+      #d6d238 0%,
+      #beaa18 52%,
+      #96820c 100%
     );
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.36),
-    0 0 0 1px rgba(249, 201, 78, 0.2),
-    0 0 28px rgba(249, 201, 78, 0.2),
-    0 0 48px rgba(232, 160, 32, 0.12),
+    0 0 0 1px rgba(210, 214, 60, 0.2),
+    0 0 28px rgba(210, 214, 60, 0.2),
+    0 0 48px rgba(190, 170, 24, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    inset 0 -20px 48px rgba(201, 123, 0, 0.06);
+    inset 0 -20px 48px rgba(150, 130, 12, 0.06);
 }
 
 .btn-secondary {
@@ -748,51 +752,60 @@ a:hover {
   box-shadow: 
     0 8px 24px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.02);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.4s ease, filter 0.4s ease, background-color 0.4s ease;
   cursor: default;
 }
 
-.industries-motif:hover {
+.industries-motif:hover,
+.industries-motif.is-active {
   transform: translateY(-6px) scale(1.08);
   box-shadow:
     0 16px 36px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.industries-motif:nth-child(1):hover {
-  filter: drop-shadow(0 0 14px rgba(82, 183, 136, 0.45));
+.industries-motif:nth-child(1):hover,
+.industries-motif:nth-child(1).is-active {
+  background-color: color-mix(in srgb, var(--bg-deep), #d6a21c 25%);
+  filter: drop-shadow(0 0 14px rgba(214, 162, 28, 0.45));
 }
 
-.industries-motif:nth-child(2):hover {
-  filter: drop-shadow(0 0 14px rgba(42, 159, 168, 0.45));
+.industries-motif:nth-child(2):hover,
+.industries-motif:nth-child(2).is-active {
+  background-color: color-mix(in srgb, var(--bg-deep), #2ccb2c 25%);
+  filter: drop-shadow(0 0 14px rgba(44, 203, 44, 0.45));
 }
 
-.industries-motif:nth-child(3):hover {
-  filter: drop-shadow(0 0 14px rgba(143, 223, 204, 0.45));
+.industries-motif:nth-child(3):hover,
+.industries-motif:nth-child(3).is-active {
+  background-color: color-mix(in srgb, var(--bg-deep), #d6503c 25%);
+  filter: drop-shadow(0 0 14px rgba(214, 80, 60, 0.45));
 }
 
-.industries-motif:nth-child(4):hover {
-  filter: drop-shadow(0 0 14px rgba(94, 203, 214, 0.45));
+.industries-motif:nth-child(4):hover,
+.industries-motif:nth-child(4).is-active {
+  background-color: color-mix(in srgb, var(--bg-deep), #6c50e2 25%);
+  filter: drop-shadow(0 0 14px rgba(108, 80, 226, 0.45));
 }
 
 .industries-motif:nth-child(1) {
-  color: var(--green-300);
-  filter: drop-shadow(0 0 8px rgba(82, 183, 136, 0.12));
+  color: #d6a21c;
+  filter: drop-shadow(0 0 8px rgba(214, 162, 28, 0.12));
 }
 
 .industries-motif:nth-child(2) {
-  color: var(--water-500);
-  filter: drop-shadow(0 0 8px rgba(42, 159, 168, 0.12));
+  color: #2ccb2c;
+  filter: drop-shadow(0 0 8px rgba(44, 203, 44, 0.12));
 }
 
 .industries-motif:nth-child(3) {
-  color: #8fdfcc;
-  filter: drop-shadow(0 0 8px rgba(143, 223, 204, 0.12));
+  color: #d6503c;
+  filter: drop-shadow(0 0 8px rgba(214, 80, 60, 0.12));
 }
 
 .industries-motif:nth-child(4) {
-  color: var(--water-400);
-  filter: drop-shadow(0 0 8px rgba(94, 203, 214, 0.12));
+  color: #6c50e2;
+  filter: drop-shadow(0 0 8px rgba(108, 80, 226, 0.12));
 }
 
 .industries-motif svg {
@@ -829,11 +842,11 @@ a:hover {
   animation: industries-sprout-sway 4.2s ease-in-out infinite;
 }
 
-.industries-motif--heart {
+.industries-motif--heart svg {
   animation: industries-heart-beat 3.4s ease-in-out infinite;
 }
 
-.industries-motif--lab {
+.industries-motif--lab svg {
   animation: industries-lab-bob 3.8s ease-in-out infinite;
 }
 
@@ -893,13 +906,13 @@ a:hover {
     transform: scale(1);
   }
   15% {
-    transform: scale(1.025);
+    transform: scale(1.1);
   }
   30% {
-    transform: scale(1);
+    transform: scale(0.97);
   }
   45% {
-    transform: scale(1.015);
+    transform: scale(1.05);
   }
   60% {
     transform: scale(1);
@@ -981,13 +994,13 @@ a:hover {
     background:
       radial-gradient(
         ellipse 88% 75% at 50% 115%,
-        rgba(82, 196, 138, 0.11) 0%,
-        rgba(148, 196, 78, 0.06) 48%,
+        rgba(173, 216, 60, 0.13) 0%,
+        rgba(218, 212, 45, 0.08) 48%,
         transparent 70%
       ),
       radial-gradient(
         ellipse 55% 45% at 50% -8%,
-        rgba(148, 196, 78, 0.07) 0%,
+        rgba(218, 212, 45, 0.09) 0%,
         transparent 58%
       ),
       var(--bg-card);
@@ -995,6 +1008,32 @@ a:hover {
       0 12px 36px rgba(0, 0, 0, 0.28),
       0 0 0 1px rgba(251, 191, 36, 0.12),
       0 0 40px rgba(251, 160, 20, 0.07);
+  }
+
+  .how-steps-wrap[data-focus="0"] .how-steps li:nth-child(1):hover,
+  .how-steps-wrap[data-focus="1"] .how-steps li:nth-child(2):hover,
+  .how-steps-wrap[data-focus="2"] .how-steps li:nth-child(3):hover {
+    border-color: rgba(251, 191, 36, 0.5);
+    background:
+      radial-gradient(
+        ellipse 95% 85% at 50% 115%,
+        rgba(218, 212, 45, 0.24) 0%,
+        rgba(173, 216, 60, 0.15) 42%,
+        transparent 72%
+      ),
+      radial-gradient(
+        ellipse 70% 55% at 50% -5%,
+        rgba(218, 212, 45, 0.15) 0%,
+        transparent 62%
+      ),
+      var(--bg-card);
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.36),
+      0 0 0 1px rgba(251, 191, 36, 0.28),
+      0 0 36px rgba(218, 212, 45, 0.22),
+      0 0 64px rgba(251, 160, 20, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -20px 48px rgba(218, 212, 45, 0.08);
   }
 }
 
@@ -1133,8 +1172,8 @@ a:hover {
   .industries-motif--tools .industries-wrench,
   .industries-motif--tools .industries-screw,
   .industries-motif--sprout .industries-sprout,
-  .industries-motif--heart,
-  .industries-motif--lab,
+  .industries-motif--heart svg,
+  .industries-motif--lab svg,
   .industries-bubble-a,
   .industries-bubble-b {
     animation: none !important;
@@ -1180,7 +1219,7 @@ a:hover {
   .how-steps-wrap[data-focus="0"] li:nth-child(1) .how-step-num,
   .how-steps-wrap[data-focus="1"] li:nth-child(2) .how-step-num,
   .how-steps-wrap[data-focus="2"] li:nth-child(3) .how-step-num {
-    background: linear-gradient(145deg, #1a4d2e 0%, #52c48a 55%, #94c44e 100%);
+    background: linear-gradient(145deg, #3a5a1a 0%, #8bc34a 55%, #d4e024 100%);
     color: #071a0d;
   }
 
@@ -1437,7 +1476,7 @@ main > .split-section:nth-child(6) {
   position: absolute;
   inset: auto 0 0;
   height: 120px;
-  background: linear-gradient(to bottom, transparent, rgba(6, 20, 26, 0.75));
+  background: linear-gradient(to bottom, transparent, rgba(4, 20, 12, 0.85));
   pointer-events: none;
   z-index: -1;
 }
@@ -1501,7 +1540,7 @@ main > .split-section:nth-child(6) {
   position: absolute;
   inset: 0 0 auto;
   height: 120px;
-  background: linear-gradient(to top, transparent, rgba(6, 20, 26, 0.75));
+  background: linear-gradient(to top, transparent, rgba(4, 20, 12, 0.85));
   pointer-events: none;
   z-index: -1;
 }
@@ -1548,12 +1587,17 @@ main > .split-section:nth-child(6) {
   margin-top: 0.35rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--accent-link);
+  background: linear-gradient(90deg, #52c48a, #94c44e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-decoration: none;
 }
 
 .contact-email:hover {
   text-decoration: underline;
+  -webkit-text-decoration-color: #52c48a;
+  text-decoration-color: #52c48a;
 }
 
 .contact-links {

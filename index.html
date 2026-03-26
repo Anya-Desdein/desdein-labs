@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>desdein-labs — Software for physical systems</title>
-    <meta property="og:image" content="./favicon-bg.svg" />
+    <meta property="og:image" content="./images/favicon-bg.svg" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content="./favicon-bg.svg" />
-    <link rel="icon" type="image/svg+xml" href="./favicon-bg.svg" />
-    <link rel="apple-touch-icon" href="./favicon-bg.svg" />
+    <meta name="twitter:image" content="./images/favicon-bg.svg" />
+    <link rel="icon" type="image/svg+xml" href="./images/favicon-bg.svg" />
+    <link rel="apple-touch-icon" href="./images/favicon-bg.svg" />
 
     <!-- Replace GOOGLE_BOOKING_URL with your Google Calendar Appointment Schedules link (Calendar → Create → Appointment schedule → Share). -->
     <meta name="booking-url" content="https://calendar.app.google/REPLACE_WITH_YOUR_SCHEDULE_LINK" />
@@ -93,8 +93,8 @@
               <defs>
                 <linearGradient id="how-connector-grad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stop-color="#40916c" />
-                  <stop offset="50%" stop-color="#52b788" />
-                  <stop offset="100%" stop-color="#5ecbd6" />
+                  <stop offset="50%" stop-color="#8bc34a" />
+                  <stop offset="100%" stop-color="#d4e024" />
                 </linearGradient>
                 <filter id="how-connector-glow" x="-40%" y="-40%" width="180%" height="180%">
                   <feGaussianBlur stdDeviation="1.8" result="blur" />
@@ -170,15 +170,15 @@
               </span>
               <span class="industries-motif industries-motif--heart" title="Wellness">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path class="industries-motif-heart" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path class="industries-motif-heart" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </span>
               <span class="industries-motif industries-motif--lab" title="Bio &amp; lab">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g class="industries-flask-shape" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 3h6"/>
-                    <path d="M10 3v7l-6 10h16l-6-10V3"/>
-                    <path d="M6 16h12"/>
+                    <path d="M10 3v7l-5.1 8.5a2 2 0 0 0 1.6 1.5h11a2 2 0 0 0 1.6-1.5l-5.1-8.5V3"/>
+                    <path d="M6.5 16h11"/>
                   </g>
                   <circle class="industries-bubble industries-bubble-a" cx="12" cy="13" r="1" fill="currentColor" opacity="0.6"/>
                   <circle class="industries-bubble industries-bubble-b" cx="12" cy="18" r="1.5" fill="currentColor" opacity="0.4"/>
@@ -306,17 +306,19 @@
       })();
       (function () {
         var mq = window.matchMedia("(min-width: 900px)");
-        var threshold = 20;
+        var howSection = document.getElementById("how");
 
-        function syncLogoScroll() {
+        function setScrolled(val) {
           if (!mq.matches) {
             document.body.classList.remove("is-scrolled");
             return;
           }
-          document.body.classList.toggle(
-            "is-scrolled",
-            window.scrollY > threshold
-          );
+          document.body.classList.toggle("is-scrolled", val);
+        }
+
+        function syncLogoScroll() {
+          var triggerY = window.innerHeight * 0.65;
+          setScrolled(!!howSection && howSection.getBoundingClientRect().top <= triggerY);
         }
 
         mq.addEventListener("change", syncLogoScroll);
@@ -476,12 +478,20 @@
           return document.getElementById(hash.slice(1));
         });
         function update() {
-          var triggerY = window.innerHeight * 0.45;
+          var triggerY = window.innerHeight * 0.65;
           var active = -1;
           for (var i = 0; i < sections.length; i++) {
             if (!sections[i]) continue;
             if (sections[i].getBoundingClientRect().top <= triggerY) active = i;
           }
+          
+          // If the last section's bottom is near the viewport bottom, we've scrolled to the end.
+          // This ensures short sections at the bottom get activated even if they don't reach triggerY.
+          var lastSection = sections[sections.length - 1];
+          if (lastSection && lastSection.getBoundingClientRect().bottom <= window.innerHeight + 100) {
+            active = sections.length - 1;
+          }
+
           links.forEach(function (a, i) {
             a.classList.toggle("nav-link--active", i === active);
           });
@@ -517,6 +527,40 @@
         splits.forEach(function (el) {
           io.observe(el);
         });
+      })();
+      (function () {
+        var motifs = document.querySelectorAll(".industries-motif");
+        var container = document.querySelector(".industries-motifs");
+        if (!motifs.length || !container) return;
+
+        function updateMotifs() {
+          if (window.innerWidth >= 800) {
+            motifs.forEach(function(m) { m.classList.remove("is-active"); });
+            return;
+          }
+          var rect = container.getBoundingClientRect();
+          var vh = window.innerHeight;
+          var progress = (vh - rect.top) / (vh + rect.height);
+          
+          var p = (progress - 0.25) / 0.5;
+          var activeIndex = -1;
+          if (p >= 0 && p <= 1) {
+            activeIndex = Math.floor(p * motifs.length);
+            if (activeIndex >= motifs.length) activeIndex = motifs.length - 1;
+          }
+          
+          motifs.forEach(function(m, i) {
+            if (i === activeIndex) {
+              m.classList.add("is-active");
+            } else {
+              m.classList.remove("is-active");
+            }
+          });
+        }
+
+        window.addEventListener("scroll", updateMotifs, { passive: true });
+        window.addEventListener("resize", updateMotifs, { passive: true });
+        updateMotifs();
       })();
     </script>
   </body>

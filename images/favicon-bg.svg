@@ -5,7 +5,7 @@
   xmlns="http://www.w3.org/2000/svg"
 >
   <!-- Background -->
-  <rect x="0" y="0" width="512" height="512" fill="#150b13" />
+  <rect x="0" y="0" width="512" height="512" fill="#020805" />
 
   <!-- Big d -->
   <text
@@ -27,6 +27,6 @@
     y="410"
     width="280"
     height="28"
-    fill="#e8192c"
+    fill="#52c48a"
   />
 </svg>
