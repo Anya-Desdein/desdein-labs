@@ -406,7 +406,7 @@ a:hover {
   background-image: url("images/hero-waves.svg");
   background-size: cover;
   background-position: center;
-  opacity: 0.15;
+  opacity: 0.18;
   pointer-events: none;
   z-index: -1;
   /* Focus on bottom-left, fading out behind text (top-left) and top-right */
@@ -1551,7 +1551,7 @@ main > .split-section:nth-child(6) {
   background-image: url("images/hero-waves.svg");
   background-size: cover;
   background-position: center 80%;
-  opacity: 0.3;
+  opacity: 0.35;
   pointer-events: none;
   z-index: -1;
   mask-image: radial-gradient(ellipse 70% 100% at 50% 50%, transparent 35%, black 85%);
