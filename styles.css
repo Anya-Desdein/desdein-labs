@@ -1375,8 +1375,8 @@ main > .split-section:nth-child(6) {
   inset: 0;
   background: linear-gradient(
     105deg,
-    rgba(4, 8, 6, 0.25) 0%,
-    rgba(4, 8, 6, 0.65) 100%
+    rgba(4, 8, 6, 0.1) 0%,
+    rgba(4, 8, 6, 0.35) 100%
   );
   pointer-events: none;
   transition: background 0.45s ease, opacity 0.45s ease;
@@ -1385,8 +1385,8 @@ main > .split-section:nth-child(6) {
 .split-section:hover .split-visual::after {
   background: linear-gradient(
     105deg,
-    rgba(94, 203, 214, 0.12) 0%,
-    rgba(4, 8, 6, 0.45) 100%
+    rgba(94, 203, 214, 0.05) 0%,
+    rgba(4, 8, 6, 0.2) 100%
   );
   opacity: 0.92;
 }
@@ -1394,8 +1394,8 @@ main > .split-section:nth-child(6) {
 .split-row--reverse .split-visual::after {
   background: linear-gradient(
     -105deg,
-    rgba(4, 8, 6, 0.25) 0%,
-    rgba(4, 8, 6, 0.65) 100%
+    rgba(4, 8, 6, 0.1) 0%,
+    rgba(4, 8, 6, 0.35) 100%
   );
 }
 
@@ -1403,8 +1403,8 @@ main > .split-section:nth-child(6) {
 .split-visual--mfg {
   background-image: linear-gradient(
       135deg,
-      rgba(27, 67, 50, 0.82) 0%,
-      rgba(13, 59, 77, 0.75) 100%
+      rgba(27, 67, 50, 0.4) 0%,
+      rgba(13, 59, 77, 0.35) 100%
     ),
     url("images/manufacturing.jpg");
 }
@@ -1412,8 +1412,8 @@ main > .split-section:nth-child(6) {
 .split-visual--ag {
   background-image: linear-gradient(
       135deg,
-      rgba(45, 106, 79, 0.85) 0%,
-      rgba(8, 40, 50, 0.78) 100%
+      rgba(45, 106, 79, 0.4) 0%,
+      rgba(8, 40, 50, 0.35) 100%
     ),
     url("images/agriculture-worker.jpg");
 }
@@ -1421,9 +1421,9 @@ main > .split-section:nth-child(6) {
 .split-visual--bio {
   background-image: linear-gradient(
       135deg,
-      rgba(13, 59, 77, 0.8) 0%,
-      rgba(27, 111, 122, 0.55) 50%,
-      rgba(29, 90, 70, 0.75) 100%
+      rgba(13, 59, 77, 0.4) 0%,
+      rgba(27, 111, 122, 0.25) 50%,
+      rgba(29, 90, 70, 0.35) 100%
     ),
     url("images/bio-wellness.jpg");
 }
