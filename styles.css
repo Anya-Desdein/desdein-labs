@@ -1861,6 +1861,8 @@ main > .split-section:nth-child(6) {
   .btn-primary:active,
   .btn-primary--large:hover,
   .btn-primary--large:active,
+  .btn-secondary:hover,
+  .btn-secondary:active,
   .contact-links a:hover,
   .contact-links a:active,
   .contact-links a[href^="mailto:"]:hover,
